@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arman Attar | Portfolio</title>
+    
+    <!-- Favicon Links (Update these links with your own favicon files) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Intro Animation -->
+    <div id="intro-overlay">
+        <div class="intro-curtain" id="curtain-left"></div>
+        <div class="intro-content">
+            <div class="intro-logo">AA</div>
+            <h2 class="intro-text">
+                <span style="animation-delay: 1.2s;">Welcome</span>
+                <span style="animation-delay: 1.4s;">to</span>
+                <span style="animation-delay: 1.6s;">my</span>
+                <span style="animation-delay: 1.8s;">Portfolio</span>
+            </h2>
+            <button id="skip-intro">Skip Intro</button>
+        </div>
+        <div class="intro-curtain" id="curtain-right"></div>
+    </div>
+
+    <!-- Particle.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Arman Attar.</a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-links-desktop">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#journey">My Journey</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-btn" id="menu-btn" aria-label="Open Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="close-btn" id="close-btn" aria-label="Close Menu">&times;</button>
+        <ul>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#experience" class="mobile-link">Experience</a></li>
+            <li><a href="#journey" class="mobile-link">My Journey</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content" data-aos="fade-right">
+                <h1>Hi, I'm <span class="highlight">Arman Attar</span>.</h1>
+                <p>I'm a <span id="typed-text"></span></p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section">
+            <div data-aos="fade-up">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content-grid">
+                    <div class="about-image">
+                        <!-- NOTE: The original image path was a local file, which won't work on a live website. -->
+                        <!-- Please replace the placeholder URL below with a URL to your photo. -->
+                        <img src="C:\Users\ayana\Downloads\PROFILE PHOTO.jpg" alt="A professional photo of Arman Attar">
+                    </div>
+                    <div class="about-text">
+                        <p>Hello! I'm a final-year AI & ML Engineering student at VSM Institute of Technology with a strong CGPA of 8.89. As a passionate problem-solver and a quick learner, I thrive at the intersection of technology and innovation, constantly seeking to expand my knowledge and skills.</p>
+                        <p>My technical foundation is built on languages like <strong>Python</strong> and <strong>MySQL</strong>, complemented by web development skills in <strong>HTML, CSS, and JavaScript</strong>. I've applied these skills in practical settings, most notably through the <strong>Deloitte Technology Job Simulation</strong>, where I gained valuable experience in software development and data analysis. I'm excited to leverage my academic background and hands-on experience to contribute to challenging projects in the tech industry.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="experience-section">
+            <div data-aos="fade-up">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="experience-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h3>Deloitte - Technology Job Simulation</h3>
+                        <p>Jul 2025 - Present</p>
+                        <p>Gaining hands-on experience in programming, data analysis, and software development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Journey Section (Education) -->
+        <section id="journey" class="journey-section">
+            <div data-aos="fade-up">
+                <h2 class="section-title">My Journey</h2>
+                <div class="journey-timeline">
+                    <div class="timeline-item timeline-left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <h3>B.E in AI & ML Engineering</h3>
+                            <p>VSM Institute of Technology</p>
+                            <p>Aug 2022 - Present</p>
+                            <p><strong>CGPA:</strong> 8.89 (Till 6th Sem)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <h3>12th/PUC</h3>
+                            <p>Basavaprabhu Kore PU College, Chikodi</p>
+                            <p>Nov 2020 - Jun 2022</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item timeline-left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <h3>10th Grade</h3>
+                            <p>CK High School, Examba</p>
+                            <p>Jun 2017 - Aug 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section" data-aos="zoom-in">
+             <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Quick Learner</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">JavaScript</span>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div data-aos="fade-up">
+                <h2 class="section-title">My Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt>
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=Tic+Tac+Toe" alt="Screenshot of Tic Tac Toe">
+                        <div class="project-info">
+                            <h3>Tic Tac Toe App</h3>
+                            <ul>
+                                <li>Interactive two-player gameplay.</li>
+                                <li>Challenging AI opponent.</li>
+                                <li>Clean and intuitive user interface.</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span class="tech-tag">Android</span>
+                                <span class="tech-tag">Java</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt>
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=Calculator" alt="Screenshot of Calculator App">
+                        <div class="project-info">
+                            <h3>Calculator App</h3>
+                            <ul>
+                                <li>Supports basic arithmetic operations.</li>
+                                <li>Responsive and user-friendly design.</li>
+                                <li>Lightweight and efficient performance.</li>
+                            </ul>
+                            <div class="project-tags">
+                                 <span class="tech-tag">HTML</span>
+                                 <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300" data-tilt>
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=Real-Time+Clock" alt="Screenshot of Real-Time Clock">
+                        <div class="project-info">
+                            <h3>Real-Time Clock</h3>
+                            <ul>
+                                <li>Displays current time accurately.</li>
+                                <li>Updates every second without refresh.</li>
+                                <li>Simple and clean digital display.</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Tkinter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400" data-tilt>
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=Portfolio" alt="Screenshot of Portfolio Website">
+                        <div class="project-info">
+                            <h3>Personal Portfolio</h3>
+                            <ul>
+                                <li>Interactive UI with animations.</li>
+                                <li>Fully responsive for all devices.</li>
+                                <li>Features a dynamic project showcase.</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Achievements Section -->
+        <section id="certifications" class="certifications-section">
+            <div data-aos="fade-up">
+                <h2 class="section-title">Certifications & Achievements</h2>
+                <div class="certifications-grid">
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="100">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h3 class="highlight-gold">University Rank: 16th</h3>
+                            <p class="achievement-desc">Achieved in the 5th Semester of AIML Engineering out of 100 students.</p>
+                        </div>
+                    </div>
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="200">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>Generative AI for Beginners</h3>
+                            <p>Udemy</p>
+                        </div>
+                    </div>
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="300">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>Java Complete Course</h3>
+                            <p>Udemy</p>
+                        </div>
+                    </div>
+                     <div class="cert-card" data-aos="fade-left" data-aos-delay="400">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>Excel Essentials</h3>
+                            <p>Udemy</p>
+                        </div>
+                    </div>
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="500">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>TCS iON Career Edge - Young Professional</h3>
+                            <p>TCS</p>
+                        </div>
+                    </div>
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="600">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>HACK-O-MANIA</h3>
+                            <p>VSM Institute of Technology</p>
+                        </div>
+                    </div>
+                    <!-- New entries added below -->
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="700">
+                        <i class="fas fa-laptop-code"></i>
+                        <div>
+                            <h3>Python Programming Internship</h3>
+                            <p>InternPe</p>
+                        </div>
+                    </div>
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="800">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>Prompt Engineering</h3>
+                            <p>Simplilearn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section" data-aos="zoom-in">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Have a question or want to work together? Feel free to leave me a message below!</p>
+            
+            <!-- NOTE: Update this action URL with your unique Formspree ID to receive messages. -->
+            <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Update these URLs with your actual social media profiles -->
+                <a href="https://github.com/Spidey017" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/arman-attar-b273b32b1/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 Arman Attar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
