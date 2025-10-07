@@ -175,7 +175,7 @@ h2.section-title {
     position: relative;
     display: inline-block;
 }
-/* Adjusted positioning for center alignment */
+
 h2.section-title::after {
     content: '';
     position: absolute;
@@ -367,13 +367,27 @@ header nav {
     text-align: center;
 }
 
+/* Override responsive styles for paragraph alignment */
+@media (min-width: 768px) {
+    .about-text p {
+        text-align: left;
+    }
+}
+
+
 /* --- Work Experience Section --- */
+.experience-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Added gap for multiple cards */
+}
 .experience-card {
     background-color: var(--bg-medium);
     padding: 2rem;
     border-radius: 0.75rem;
-    max-width: 800px;
-    margin: 0 auto;
+    /* Removed max-width and margin: 0 auto; as it's now handled by .experience-list */
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -692,6 +706,7 @@ footer {
     .about-content-grid {
         grid-template-columns: 1fr 2fr;
     }
+    /* Adjusted media query for about-text alignment */
     .about-text p {
         text-align: left;
     }
@@ -731,7 +746,6 @@ footer {
 }
 .section-title {
     text-align: center;
-    /* New rule to fix centering issue with the section title */
     left: unset;
     transform: unset;
 }
