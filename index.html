@@ -5,29 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arman Attar | Portfolio</title>
     
-    <!-- Favicon Links (Update these links with your own favicon files) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     
-    <!-- Google Fonts: Inter & Orbitron -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- AOS (Animate On Scroll) CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Intro Animation -->
     <div id="intro-overlay">
         <div class="intro-curtain" id="curtain-left"></div>
         <div class="intro-content">
@@ -43,15 +37,12 @@
         <div class="intro-curtain" id="curtain-right"></div>
     </div>
 
-    <!-- Particle.js container -->
     <div id="particles-js"></div>
 
-    <!-- Header & Navigation Bar -->
     <header>
         <nav class="container">
             <a href="#" class="logo">Arman Attar.</a>
             
-            <!-- Desktop Navigation -->
             <ul class="nav-links-desktop">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -61,14 +52,12 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <!-- Mobile Menu Button -->
             <button class="menu-btn" id="menu-btn" aria-label="Open Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav" id="mobile-nav">
         <button class="close-btn" id="close-btn" aria-label="Close Menu">&times;</button>
         <ul>
@@ -83,7 +72,6 @@
 
     <main class="container">
 
-        <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-content" data-aos="fade-right">
                 <h1>Hi, I'm <span class="highlight">Arman Attar</span>.</h1>
@@ -94,40 +82,51 @@
             </div>
         </section>
 
-        <!-- About Me Section -->
         <section id="about" class="about-section">
             <div data-aos="fade-up">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content-grid">
                     <div class="about-image">
-                        <!-- NOTE: The original image path was a local file, which won't work on a live website. -->
-                        <!-- Please replace the placeholder URL below with a URL to your photo. -->
-                        <img src="PROFILE PHOTO.jpg" alt="A professional photo of Arman Attar">
+                        <img src="arman_pp.jpg" alt="A professional photo of Arman Attar">
                     </div>
                     <div class="about-text">
-                        <p>Hello! I'm a final-year AI & ML Engineering student at VSM Institute of Technology with a strong CGPA of 8.89. As a passionate problem-solver and a quick learner, I thrive at the intersection of technology and innovation, constantly seeking to expand my knowledge and skills.</p>
-                        <p>My technical foundation is built on languages like <strong>Python</strong> and <strong>MySQL</strong>, complemented by web development skills in <strong>HTML, CSS, and JavaScript</strong>. I've applied these skills in practical settings, most notably through the <strong>Deloitte Technology Job Simulation</strong>, where I gained valuable experience in software development and data analysis. I'm excited to leverage my academic background and hands-on experience to contribute to challenging projects in the tech industry.</p>
+                        <p>
+                            I am a final-year Artificial Intelligence and Machine Learning (AIML) student with an aggregate <strong>CGPA of 8.89</strong> till the 6th semester. I am proficient in core technologies like <strong>Python</strong>, <strong>SQL</strong>, and basic <strong>Java</strong>, and possess additional experience in frontend development using <strong>HTML, CSS, and JavaScript</strong> gained through project work.
+                        </p>
+                        <p>
+                            I have a demonstrated ability to <strong>solve problems</strong>, build applications, and quickly adapt to evolving technologies through academic and simulated projects. I am passionate about innovation, eager to learn and improve, and motivated to contribute my technical foundation to challenging, real-world technology challenges.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Work Experience Section -->
         <section id="experience" class="experience-section">
             <div data-aos="fade-up">
                 <h2 class="section-title">Work Experience</h2>
-                <div class="experience-card">
-                    <i class="fas fa-briefcase"></i>
-                    <div>
-                        <h3>Deloitte - Technology Job Simulation</h3>
-                        <p>Jul 2025 - Present</p>
-                        <p>Gaining hands-on experience in programming, data analysis, and software development.</p>
+                <div class="experience-list">
+                    
+                    <div class="experience-card" data-aos="fade-up" data-aos-delay="0">
+                        <i class="fas fa-laptop-code"></i>
+                        <div>
+                            <h3>Python Programming Intern (Remote)</h3>
+                            <p>InternPe | Aug 2025</p>
+                            <p>Completed a 1-month remote internship in Python programming, working on real-world projects that enhanced coding, debugging, and optimization skills. Gained exposure to coding standards, problem-solving, and collaborative development, while being recognized for professionalism in an online environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h3>Deloitte - Technology Job Simulation</h3>
+                            <p>Jul 2025</p>
+                            <p>Gaining hands-on experience in programming, data analysis, and software development.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- My Journey Section (Education) -->
         <section id="journey" class="journey-section">
             <div data-aos="fade-up">
                 <h2 class="section-title">My Journey</h2>
@@ -158,12 +157,12 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="skills-section" data-aos="zoom-in">
              <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Data Analytics</span>
                 <span class="skill-tag">Problem Solving</span>
                 <span class="skill-tag">Quick Learner</span>
                 <span class="skill-tag">HTML</span>
@@ -172,12 +171,31 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="projects-section">
             <div data-aos="fade-up">
                 <h2 class="section-title">My Projects</h2>
                 <div class="project-grid">
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt>
+                    
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="50" data-tilt>
+                        <img src="https://placehold.co/600x400/818cf8/1f2937?text=Lung+Disease+Prediction" alt="Screenshot of Lung Disease Prediction App">
+                        <div class="project-info">
+                            <h3>LUNG DISEASE PREDICTION USING CHEST X-RAY IMAGES</h3>
+                            <p><strong>Feb 2025 - Present</strong></p>
+                            <ul>
+                                <li>Developing a web app to predict lung diseases from chest X-ray images.</li>
+                                <li>Used Machine Learning and Deep Learning models for accurate detection.</li>
+                            </ul>
+                            <div class="project-tags">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JS</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="150" data-tilt>
                         <img src="https://placehold.co/600x400/1f2937/ffffff?text=Tic+Tac+Toe" alt="Screenshot of Tic Tac Toe">
                         <div class="project-info">
                             <h3>Tic Tac Toe App</h3>
@@ -192,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="250" data-tilt>
                         <img src="https://placehold.co/600x400/1f2937/ffffff?text=Calculator" alt="Screenshot of Calculator App">
                         <div class="project-info">
                             <h3>Calculator App</h3>
@@ -208,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="300" data-tilt>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="350" data-tilt>
                         <img src="https://placehold.co/600x400/1f2937/ffffff?text=Real-Time+Clock" alt="Screenshot of Real-Time Clock">
                         <div class="project-info">
                             <h3>Real-Time Clock</h3>
@@ -223,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="400" data-tilt>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="450" data-tilt>
                         <img src="https://placehold.co/600x400/1f2937/ffffff?text=Portfolio" alt="Screenshot of Portfolio Website">
                         <div class="project-info">
                             <h3>Personal Portfolio</h3>
@@ -243,62 +261,84 @@
             </div>
         </section>
 
-        <!-- Certifications & Achievements Section -->
         <section id="certifications" class="certifications-section">
             <div data-aos="fade-up">
                 <h2 class="section-title">Certifications & Achievements</h2>
                 <div class="certifications-grid">
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="100">
+                    
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="50">
                         <i class="fas fa-trophy"></i>
                         <div>
                             <h3 class="highlight-gold">University Rank: 16th</h3>
                             <p class="achievement-desc">Achieved in the 5th semester of AIML Engineering, ranked among the top 20 students under VTU.</p>
                         </div>
                     </div>
-                    <div class="cert-card" data-aos="fade-left" data-aos-delay="200">
+                    
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="150">
+                        <i class="fas fa-award"></i>
+                        <div>
+                            <h3>DSA For Product-Based Companies</h3>
+                            <p>EXCELR</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="250">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h3>Python For Data Science</h3>
+                            <p>IBM Skills Network</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="350">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>Generative AI for Beginners</h3>
                             <p>Udemy</p>
                         </div>
                     </div>
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="300">
+                    
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="450">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>Java Complete Course</h3>
                             <p>Udemy</p>
                         </div>
                     </div>
-                     <div class="cert-card" data-aos="fade-left" data-aos-delay="400">
+
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="550">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>Excel Essentials</h3>
                             <p>Udemy</p>
                         </div>
                     </div>
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="500">
+                    
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="650">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>TCS iON Career Edge - Young Professional</h3>
                             <p>TCS</p>
                         </div>
                     </div>
-                    <div class="cert-card" data-aos="fade-left" data-aos-delay="600">
+                    
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="750">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>HACK-O-MANIA</h3>
                             <p>VSM Institute of Technology</p>
                         </div>
                     </div>
-                    <!-- New entries added below -->
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="700">
+                    
+                    <div class="cert-card" data-aos="fade-right" data-aos-delay="850">
                         <i class="fas fa-laptop-code"></i>
                         <div>
                             <h3>Python Programming Internship</h3>
                             <p>InternPe</p>
                         </div>
                     </div>
-                    <div class="cert-card" data-aos="fade-left" data-aos-delay="800">
+                    
+                    <div class="cert-card" data-aos="fade-left" data-aos-delay="950">
                         <i class="fas fa-certificate"></i>
                         <div>
                             <h3>Prompt Engineering</h3>
@@ -309,12 +349,10 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="contact-section" data-aos="zoom-in">
             <h2 class="section-title">Get In Touch</h2>
             <p>Have a question or want to work together? Feel free to leave me a message below!</p>
             
-            <!-- NOTE: Update this action URL with your unique Formspree ID to receive messages. -->
             <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="contact-form">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required>
@@ -329,11 +367,9 @@
 
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
-                <!-- Update these URLs with your actual social media profiles -->
                 <a href="https://github.com/Spidey017" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/arman-attar-b273b32b1/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
@@ -341,12 +377,11 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
-
