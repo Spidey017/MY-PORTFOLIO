@@ -39,12 +39,28 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => mobileNav.classList.remove('active'));
     });
 
+    // --- Auto-hide Header on scroll ---
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+            // Downscroll
+            header.style.top = `-${header.offsetHeight}px`;
+        } else {
+            // Upscroll
+            header.style.top = '0';
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+
+
     // --- Typed.js Initialization ---
     new Typed('#typed-text', {
         strings: [
-            'a final-year AI & ML Engineering student.', 
-            'a passionate problem-solver.', 
-            'a creative software developer.'
+            'a Python Full Stack Developer.',
+            'an AI & ML Engineer.',
+            'a recent B.E. Graduate.'
         ],
         typeSpeed: 50,
         backSpeed: 25,
@@ -58,16 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1000,
         once: true,
         offset: 100,
-    });
-    
-    // --- Vanilla Tilt Initialization ---
-    VanillaTilt.init(document.querySelectorAll(".project-card"), {
-        max: 10,
-        speed: 2000,
-        perspective: 2000,
-        easing: "cubic-bezier(.03,.98,.52,.99)",
-        glare: true,
-        "max-glare": 0.1
     });
 
     // --- Particles.js Initialization ---
@@ -91,4 +97,45 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "retina_detect": true
     });
+
+    // --- Formspree Contact Form Handling ---
+    const form = document.getElementById('contact-form');
+    
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const status = document.getElementById('form-status');
+        const data = new FormData(event.target);
+        
+        // Simple client-side validation
+        if (!data.get('name') || !data.get('email') || !data.get('message')) {
+            status.innerHTML = "Please fill out all fields.";
+            status.className = 'error';
+            return;
+        }
+
+        try {
+            const response = await fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                status.innerHTML = "Thanks for your message! I'll get back to you soon.";
+                status.className = 'success';
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    status.innerHTML = data.errors ? data.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
+                    status.className = 'error';
+                })
+            }
+        } catch (error) {
+            status.innerHTML = "Oops! There was a network error. Please try again.";
+            status.className = 'error';
+        }
+    }
+    form.addEventListener("submit", handleSubmit);
 });

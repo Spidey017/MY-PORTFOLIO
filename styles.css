@@ -202,6 +202,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 50;
+    transition: top 0.4s ease-in-out;
     border-bottom: 1px solid var(--bg-light);
 }
 
@@ -228,6 +229,26 @@ header nav {
 .nav-links-desktop a {
     color: var(--text-light);
     font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links-desktop a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links-desktop a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .menu-btn {
@@ -510,6 +531,12 @@ header nav {
     font-weight: 600;
     padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
 /* --- Projects Section --- */
@@ -524,24 +551,45 @@ header nav {
     border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.8s cubic-bezier(.03,.98,.52,.99), box-shadow 0.8s cubic-bezier(.03,.98,.52,.99);
-    transform-style: preserve-3d;
 }
 
-.project-card:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.20);
+.project-image-container {
+    position: relative;
+    overflow: hidden;
 }
 
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transform: translateZ(20px);
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 41, 55, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-links {
+    opacity: 1;
 }
 
 .project-info {
     padding: 1.5rem;
-    transform: translateZ(10px);
 }
 
 .project-info h3 {
@@ -565,6 +613,11 @@ header nav {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+.project-links a:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
 }
 
 .tech-tag {
