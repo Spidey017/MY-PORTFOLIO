@@ -1,0 +1,77 @@
+/* STREAMING_CHUNK:Defining Custom CSS Variables & Base Rules */
+:root {
+--bg-dark: #070b14;
+--card-dark: #0f172a;
+--border-dark: #1e293b;
+--text-primary: #f8fafc;
+--text-secondary: #94a3b8;
+--brand-primary: #6366f1;
+--brand-hover: #4f46e5;
+}
+
+/* Ambient glow utility */
+.ambient-glow {
+position: absolute;
+filter: blur(120px);
+border-radius: 9999px;
+pointer-events: none;
+z-index: 0;
+opacity: 0.45;
+}
+
+/* STREAMING_CHUNK:Styling Navigation Links & Active Indicators */
+.nav-link.active {
+color: #818cf8;
+}
+
+.nav-link.active::after {
+content: '';
+position: absolute;
+bottom: -6px;
+left: 0;
+width: 100%;
+height: 2px;
+background: #6366f1;
+border-radius: 2px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: #0f172a;
+}
+
+.dark ::-webkit-scrollbar-track {
+background: #070b14;
+}
+
+::-webkit-scrollbar-thumb {
+background: #334155;
+border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #6366f1;
+}
+
+/* Glassmorphism utility */
+.card-glass {
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+}
+
+/* STREAMING_CHUNK:Defining Scroll Reveal Animations */
+.animate-on-scroll {
+opacity: 0;
+transform: translateY(28px);
+transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+will-change: opacity, transform;
+}
+
+.animate-on-scroll.is-visible {
+opacity: 1;
+transform: translateY(0);
+}

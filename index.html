@@ -1,368 +1,1123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arman Attar | Portfolio</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
+    <title>Arman Attar | Software Developer & AI/ML Engineer</title>
+    <meta name="description" content="Portfolio of Arman Attar, Computer Science & Engineering (AI & ML) graduate, VTU University Rank Holder, and Python Full Stack Developer.">
+    <meta name="keywords" content="Arman Attar, Software Developer, Python Full Stack, AI ML Engineer, LangChain, Gemini, Django, React, TensorFlow, LeetCode, Bengaluru">
+    <meta name="author" content="Arman Attar">
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Arman Attar | Software Developer & AI/ML Engineer">
+    <meta property="og:description" content="CSE (AI & ML) Graduate • 9.09 CGPA • 350+ LeetCode • Python, Django, React, LangChain, TensorFlow">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="arman_pp.jpg">
+
+    <!-- Google Fonts: Inter & JetBrains Mono for 2026 Tech Aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        };
+    </script>
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- External Linked Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <div id="intro-overlay">
-        <div class="intro-curtain" id="curtain-left"></div>
-        <div class="intro-content">
-            <div class="intro-logo">AA</div>
-            <h2 class="intro-text">
-                <span style="animation-delay: 1.2s;">Welcome</span>
-                <span style="animation-delay: 1.4s;">to</span>
-                <span style="animation-delay: 1.6s;">my</span>
-                <span style="animation-delay: 1.8s;">Portfolio</span>
-            </h2>
-            <button id="skip-intro">Skip Intro</button>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#070b14] dark:text-slate-100 transition-colors duration-300 antialiased font-sans relative overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <div id="futuristic-loader" class="fixed inset-0 z-[100] bg-[#070b14] flex flex-col items-center justify-center transition-all duration-700">
+        <div class="relative flex flex-col items-center">
+            <div class="relative w-28 h-28 flex items-center justify-center">
+                <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="4" class="text-slate-800" fill="transparent" />
+                    <circle id="loader-progress-circle" cx="50" cy="50" r="42" stroke="url(#loaderGradient)" stroke-width="4" stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round" fill="transparent" class="transition-all duration-150" />
+                    <defs>
+                        <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#6366f1" />
+                            <stop offset="50%" stop-color="#06b6d4" />
+                            <stop offset="100%" stop-color="#10b981" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-2xl font-mono font-extrabold text-white tracking-wider">AA</span>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col items-center gap-1.5">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span id="loader-status-text" class="text-xs font-mono text-slate-400 tracking-wide">Compiling Environment...</span>
+                </div>
+                <div class="text-xs font-mono font-semibold text-brand-400" id="loader-percentage">0%</div>
+            </div>
+            
+            <button id="skip-intro-btn" class="mt-5 text-[11px] font-mono text-slate-500 hover:text-slate-300 underline underline-offset-4 transition-colors">
+                Skip to Portfolio &rarr;
+            </button>
         </div>
-        <div class="intro-curtain" id="curtain-right"></div>
     </div>
 
-    <div id="particles-js"></div>
+    <!-- Interactive Background Particle Canvas -->
+    <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">Arman Attar.</a>
+    <header id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-[#070b14]/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             
-            <ul class="nav-links-desktop">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience & Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#awards">Honors & Awards</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#home" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-cyan-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    AA
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-slate-900 dark:text-white text-base tracking-tight leading-none group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">
+                        Arman Attar<span class="text-brand-500">.</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400">CSE (AI &amp; ML)</span>
+                </div>
+            </a>
 
-            <button class="menu-btn" id="menu-btn" aria-label="Open Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#about" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">About</a>
+                <a href="#academics" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Education</a>
+                <a href="#projects" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Projects</a>
+                <a href="#skills" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Skills</a>
+                <a href="#experience" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Experience</a>
+                <a href="#achievements" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Honors</a>
+                <a href="#contact" class="nav-link relative hover:text-brand-600 dark:hover:text-brand-400 transition-colors py-1">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                    <i class="fas fa-sun text-amber-500 hidden dark:block"></i>
+                    <i class="fas fa-moon text-slate-700 block dark:hidden"></i>
+                </button>
+
+                <a href="Arman_Attar_Resume.pdf" download class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-sm shadow-brand-500/25 transition-all hover:-translate-y-0.5">
+                    <i class="fas fa-arrow-down-to-bracket"></i>
+                    <span>Resume</span>
+                </a>
+
+                <button id="mobile-toggle" aria-label="Open Mobile Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <div class="mobile-nav" id="mobile-nav">
-        <button class="close-btn" id="close-btn" aria-label="Close Menu">&times;</button>
-        <ul>
-            <li><a href="#about" class="mobile-link">About</a></li>
-            <li><a href="#experience" class="mobile-link">Experience & Education</a></li>
-            <li><a href="#skills" class="mobile-link">Skills</a></li>
-            <li><a href="#projects" class="mobile-link">Projects</a></li>
-            <li><a href="#awards" class="mobile-link">Honors & Awards</a></li>
-            <li><a href="#contact" class="mobile-link">Contact</a></li>
-        </ul>
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm hidden md:hidden">
+        <div class="fixed top-0 right-0 bottom-0 w-72 bg-white dark:bg-slate-900 shadow-2xl p-6 flex flex-col justify-between border-l border-slate-200 dark:border-slate-800 transform translate-x-full transition-transform duration-300" id="mobile-drawer">
+            <div>
+                <div class="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-slate-800">
+                    <span class="font-bold text-slate-900 dark:text-white">Navigation</span>
+                    <button id="mobile-close" aria-label="Close Mobile Menu" class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+                <div class="mt-6 flex flex-col gap-4 text-sm font-medium">
+                    <a href="#about" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">About</a>
+                    <a href="#academics" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Education &amp; Aggregate</a>
+                    <a href="#projects" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Projects Portfolio</a>
+                    <a href="#skills" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Technical Skills</a>
+                    <a href="#experience" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Experience &amp; Training</a>
+                    <a href="#achievements" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Honors &amp; Badges</a>
+                    <a href="#contact" class="mobile-nav-link text-slate-600 dark:text-slate-300 hover:text-brand-500 py-1.5">Contact</a>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+                <a href="Arman_Attar_Resume.pdf" download class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-brand-600 text-white shadow-sm hover:bg-brand-500 transition-colors">
+                    <i class="fas fa-file-arrow-down"></i>
+                    <span>Download Full Resume</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <main class="container">
+    <main class="relative z-10 pt-20">
+        <section id="home" class="min-h-[90vh] flex items-center relative overflow-hidden py-12 md:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 flex flex-col gap-6 animate-on-scroll">
+                        <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 w-fit">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Available for Developer &amp; AI/ML Opportunities
+                        </div>
 
-        <section class="hero" id="home">
-            <div class="hero-content" data-aos="fade-right">
-                <h1>Hi, I'm <span class="highlight">Arman Attar</span>.</h1>
-                <p>I'm a <span id="typed-text"></span></p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                        <div>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                                Hi, I'm <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-cyan-500 bg-clip-text text-transparent">Arman Attar</span>.
+                            </h1>
+                            <p class="mt-3 text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300">
+                                Computer Science &amp; Engineering (AI &amp; ML) Graduate
+                            </p>
+                            <p class="mt-2 text-sm sm:text-base text-slate-500 dark:text-slate-400 font-mono">
+                                Software Developer <span class="text-brand-500">•</span> AI/ML Engineer <span class="text-brand-500">•</span> Python Full Stack with Gen AI
+                            </p>
+                        </div>
+
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base max-w-2xl">
+                            Graduate from V.S.M. Institute of Technology (VTU) with a <strong>9.09 CGPA</strong> and <strong>90.90% engineering aggregate</strong>. Hands-on experience developing web architectures, conversational AI, and deep learning systems using <strong>Python, LangChain, Google Gemini, Django, React.js, and TensorFlow</strong>, with a foundation across <strong>350+ LeetCode problems</strong>.
+                        </p>
+
+                        <!-- Verified Metrics Strip -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2">
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-xl sm:text-2xl font-bold font-mono text-brand-600 dark:text-brand-400">9.09<span class="text-xs font-sans text-slate-400">/10</span></div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">Engineering CGPA</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-xl sm:text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400">90.90%</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">Overall Aggregate</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-xl sm:text-2xl font-bold font-mono text-amber-500">VTU Rank</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">5th &amp; 7th Semesters</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-500">350+</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">LeetCode Solved</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-3 pt-2">
+                            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/25 transition-all hover:-translate-y-0.5">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Explore Projects</span>
+                            </a>
+                            <a href="Arman_Attar_Resume.pdf" download class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-white dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-300 dark:border-slate-700 hover:border-brand-500 transition-all hover:-translate-y-0.5 shadow-sm">
+                                <i class="fas fa-file-arrow-down text-brand-500"></i>
+                                <span>Download Resume</span>
+                            </a>
+                            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-500 transition-colors">
+                                <span>Get in touch</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Social Indicators -->
+                        <div class="flex items-center gap-4 text-slate-500 dark:text-slate-400 pt-1 text-sm font-mono">
+                            <span>Connect:</span>
+                            <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 dark:hover:text-white transition-colors" title="GitHub Profile">
+                                <i class="fab fa-github text-base"></i> GitHub
+                            </a>
+                            <a href="https://leetcode.com/u/Arman_Attar_/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-500 transition-colors" title="LeetCode Profile">
+                                <i class="fas fa-code text-base"></i> LeetCode
+                            </a>
+                            <a href="https://www.linkedin.com/in/arman-attar-b273b32b1/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 transition-colors" title="LinkedIn Profile">
+                                <i class="fab fa-linkedin text-base"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Developer Terminal Card -->
+                    <div class="lg:col-span-5 flex flex-col gap-4 animate-on-scroll">
+                        <div class="rounded-2xl bg-slate-900 text-slate-200 border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs">
+                            <div class="px-4 py-3 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                                    <span class="ml-2 text-slate-400 text-[11px]">arman@engineer: ~</span>
+                                </div>
+                                <span class="text-[10px] text-slate-500">v2026.04</span>
+                            </div>
+
+                            <div class="p-4 sm:p-5 flex flex-col gap-3">
+                                <div>
+                                    <span class="text-emerald-400 font-bold">$</span> <span class="text-slate-300">cat profile.json</span>
+                                </div>
+                                <div class="bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] leading-relaxed text-slate-300 overflow-x-auto">
+<pre class="text-slate-300">{
+  <span class="text-brand-400">"candidate"</span>: <span class="text-emerald-300">"Arman Attar"</span>,
+  <span class="text-brand-400">"degree"</span>: <span class="text-emerald-300">"B.E. Computer Science (AI & ML)"</span>,
+  <span class="text-brand-400">"vtu_rank"</span>: <span class="text-amber-300">"5th & 7th Semester"</span>,
+  <span class="text-brand-400">"active_build"</span>: <span class="text-emerald-300">"LangChain + Gemini AI Chatbot"</span>,
+    <span class="text-brand-400">"core_stack"</span>: <span class="text-cyan-300">"Python Full Stack with Gen AI"</span>,
+  <span class="text-brand-400">"status"</span>: <span class="text-emerald-300">"Ready for immediate hire"</span>
+}</pre>
+                                </div>
+
+                                <div class="pt-1">
+                                    <span class="text-emerald-400 font-bold">$</span> <span class="text-slate-300">git status</span>
+                                    <p class="text-slate-400 text-[11px] mt-1">On branch main. 350+ LeetCode tests passing. 0 uncommitted bugs.</p>
+                                </div>
+
+                                <div class="pt-1 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800/80 mt-1">
+                                    <span class="flex items-center gap-1.5">
+                                        <i class="fas fa-location-dot text-rose-400"></i> Bengaluru, Karnataka
+                                    </span>
+                                    <a href="mailto:ayanattar49@gmail.com" class="text-brand-400 hover:underline">
+                                        ayanattar49@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about-section">
-            <div data-aos="fade-up">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content-grid">
-                    <div class="about-image">
-                        <img src="arman_pp.jpg" alt="A professional photo of Arman Attar" loading="lazy">
+        <section id="about" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-100/50 dark:bg-slate-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">01 // Profile</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">About Me</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        A synthesis of strong computer science fundamentals, full-stack engineering discipline, and applied artificial intelligence.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-4 flex justify-center animate-on-scroll">
+                        <div class="relative group">
+                            <div class="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-brand-600 to-cyan-500 opacity-40 group-hover:opacity-75 blur transition duration-500"></div>
+                            <div class="relative w-64 h-72 sm:w-72 sm:h-80 rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl">
+                                <img src="Arman_PP.jpeg" alt="Arman Attar - AI & ML Engineer" class="w-full h-full object-cover object-top" loading="lazy" onerror="this.src='https://placehold.co/400x500/1e293b/818cf8?text=Arman+Attar'">
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-text">
+
+                    <div class="lg:col-span-8 flex flex-col gap-5 text-slate-700 dark:text-slate-300 leading-relaxed text-base animate-on-scroll">
                         <p>
-                            My name is Arman Attar, and I am a recent B.E. graduate in Computer Science & Engineering (AI & ML) with a <strong>CGPA of 9.11</strong>. I am currently upskilling in <strong>Python Full Stack Development</strong> and have completed projects in AI/ML and web development.
+                            I am a recent <strong>Computer Science &amp; Engineering (AI &amp; ML)</strong> graduate from V.S.M. Institute of Technology (VTU), where I maintained consistent academic excellence graduating with a <strong>9.09 CGPA</strong>, an overall engineering aggregate of <strong>90.90%</strong>, and a final-year aggregate of <strong>93.67%</strong>, earning distinction as a <strong>VTU University Rank Holder in both the 5th and 7th semesters</strong>.
                         </p>
                         <p>
-                            I am passionate about innovation, eager to learn, and motivated to contribute my technical foundation to challenging, real-world technology problems. I have a demonstrated ability to solve problems, build applications, and quickly adapt to evolving technologies.
+                            My engineering approach focuses on building end-to-end solutions that bridge clean user interfaces with scalable backends and deep learning models. My core technical stack centers around <strong>Python, Django, React.js, SQL, PostgreSQL, and RESTful APIs</strong>, backed by applied computer vision experience using <strong>TensorFlow, OpenCV, and CNN architectures like EfficientNet-B0</strong>.
+                        </p>
+                        <p>
+                            Currently, I am actively architecting a <strong>Context-Aware AI Chatbot</strong> utilizing <strong>LangChain</strong> and <strong>Google's Gemini API</strong> in Python—incorporating conversation memory chains, structured prompts, and RAG semantic document grounding. I back this with disciplined problem solving, having solved over <strong>350 challenges on LeetCode</strong> with the <strong>100 Days Badge</strong> and the <strong>SQL 50 Badge</strong>.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
+                            <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <i class="fas fa-layer-group text-brand-500 mb-2 text-base"></i>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Full-Stack Web</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Component architecture with React.js, Django REST APIs, PostgreSQL.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <i class="fas fa-robot text-cyan-500 mb-2 text-base"></i>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">AI &amp; LLM Systems</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">LangChain, Gemini API, RAG, and CNN image classification pipelines.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <i class="fas fa-code-merge text-emerald-500 mb-2 text-base"></i>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm">Algorithmic Problem Solving</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">350+ LeetCode solved with deep understanding of DSA and relational SQL.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academics" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">02 // Education</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Academic Credentials</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Documented coursework and academic performance from university to foundational schooling.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2 rounded-2xl p-6 bg-white dark:bg-slate-900 border-2 border-brand-500/30 dark:border-brand-500/30 shadow-lg relative overflow-hidden animate-on-scroll">
+                        <div class="absolute top-0 right-0 px-3 py-1 bg-brand-500 text-white font-mono text-[11px] font-bold rounded-bl-xl tracking-wider">
+                            UNIVERSITY RANK HOLDER
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="flex-1">
+                                <span class="text-xs font-mono text-brand-600 dark:text-brand-400 font-semibold uppercase">Dec 2022 – May 2026</span>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-0.5">
+                                    Bachelor of Engineering in Computer Science &amp; Engineering (AI &amp; ML)
+                                </h3>
+                                <p class="text-sm font-medium text-slate-600 dark:text-slate-300 mt-1">
+                                    V.S.M. Institute of Technology (Visvesvaraya Technological University - VTU), Nipani
+                                </p>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
+                                    <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-center">
+                                        <div class="text-lg font-bold font-mono text-brand-600 dark:text-brand-400">9.09 / 10</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Cumulative CGPA</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-center">
+                                        <div class="text-lg font-bold font-mono text-cyan-600 dark:text-cyan-400">90.90%</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Overall Aggregate</div>
+                                    </div>
+                                    <div class="p-3 rounded-lg bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800 text-center">
+                                        <div class="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">93.67%</div>
+                                        <div class="text-[11px] text-slate-500 dark:text-slate-400">Final Year Aggregate</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 p-2.5 rounded-lg border border-amber-200 dark:border-amber-800/40 font-medium">
+                                    <i class="fas fa-trophy text-sm"></i>
+                                    <span>Awarded VTU University Rank in both 5th and 7th Semesters of Engineering.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6 animate-on-scroll">
+                        <div class="rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">Jun 2020 – Apr 2022</span>
+                                <h4 class="text-base font-bold text-slate-900 dark:text-white mt-1">Science Pre-University (12th / PUC)</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">K.L.E. Basavaprabhu Kore College, Chikodi</p>
+                            </div>
+                            <div class="mt-3 inline-flex items-center gap-2 text-xs font-mono font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 w-fit">
+                                <i class="fas fa-check-circle text-emerald-500"></i> Percentage: 78.16%
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">Jun 2019 – Jun 2020</span>
+                                <h4 class="text-base font-bold text-slate-900 dark:text-white mt-1">Secondary School (SSLC / 10th)</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">C K High School, Examba</p>
+                            </div>
+                            <div class="mt-3 inline-flex items-center gap-2 text-xs font-mono font-semibold px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 w-fit">
+                                <i class="fas fa-check-circle text-emerald-500"></i> Percentage: 74.24%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-100/50 dark:bg-slate-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-10 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">03 // Portfolio</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Featured Projects</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Production web architectures, deep learning diagnostic pipelines, and conversational AI agents.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2 mt-7">
+                        <button class="project-filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 text-white transition-all shadow-sm" data-filter="all">All Systems</button>
+                        <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-all" data-filter="ai">AI &amp; Generative AI</button>
+                        <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-all" data-filter="fullstack">Full-Stack &amp; React</button>
+                        <button class="project-filter-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-brand-500 transition-all" data-filter="utility">Utilities &amp; Mobile</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Active Project: LangChain & Gemini Chatbot -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border-2 border-emerald-500/40 dark:border-emerald-500/40 shadow-lg hover:border-emerald-500 transition-all hover:-translate-y-1 overflow-hidden relative animate-on-scroll" data-category="ai fullstack">
+                        <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
+                            <div class="text-center z-20">
+                                <div class="inline-flex p-3 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 mb-2">
+                                    <i class="fas fa-robot text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-mono text-emerald-400">LangChain • Google Gemini API</div>
+                            </div>
+                            <span class="absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-600 text-white shadow-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                                Currently Building
+                            </span>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+                                    Context-Aware AI Chatbot
+                                </h3>
+                                <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-mono font-medium">
+                                    LangChain • Google Gemini • Python
+                                </p>
+                                
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                                    A conversational AI agent engineered with <strong>Python</strong>, <strong>LangChain</strong>, and <strong>Google's Gemini model</strong>. Designed for responsive multi-turn dialogue, contextual conversation memory, and retrieval-augmented QA.
+                                </p>
+
+                                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1.5">
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>LangChain Orchestration:</strong> Structured prompt chains, conversation buffer memory, and output parsing.</span>
+                                    </div>
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Gemini Model Integration:</strong> Direct API integration for zero-shot reasoning and contextual answers.</span>
+                                    </div>
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>RAG Pipeline:</strong> Vector-based semantic document retrieval for grounded factual responses.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">LangChain</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">Google Gemini</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50">Python</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">RAG</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-500">
+                                        <i class="fab fa-github"></i> Repository
+                                    </a>
+                                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                                        <i class="fas fa-spinner fa-spin text-[10px]"></i> Active Build
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project: Lung Disease Detection (AI/ML) -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:border-brand-500/50 transition-all hover:-translate-y-1 overflow-hidden animate-on-scroll" data-category="ai fullstack">
+                        <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
+                            <div class="text-center z-20">
+                                <div class="inline-flex p-3 rounded-2xl bg-brand-600/20 text-brand-400 border border-brand-500/30 mb-2">
+                                    <i class="fas fa-lungs text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-mono text-cyan-400">EfficientNet-B0 CNN</div>
+                            </div>
+                            <span class="absolute top-3 left-3 z-20 px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-brand-500 text-white">
+                                AI / ML Flagship
+                            </span>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+                                    Lung Disease Detection System
+                                </h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
+                                    Computer Vision • Chest X-Ray Classification
+                                </p>
+                                
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                                    An automated diagnostic platform utilizing the <strong>EfficientNet-B0 Convolutional Neural Network</strong> to analyze chest X-ray radiographs and classify conditions into Normal, Pneumonia, and COVID-19.
+                                </p>
+
+                                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1.5">
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-brand-500 mt-0.5"></i>
+                                        <span><strong>Preprocessing:</strong> OpenCV resizing, normalization, and artifact elimination.</span>
+                                    </div>
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-brand-500 mt-0.5"></i>
+                                        <span><strong>Web Integration:</strong> Django workflow for uploads, automated inference, and report delivery.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-300 border border-brand-200 dark:border-brand-800/50">TensorFlow</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/50">OpenCV</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Django</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-500">
+                                        <i class="fab fa-github"></i> Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project: Course Management System -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:border-brand-500/50 transition-all hover:-translate-y-1 overflow-hidden animate-on-scroll" data-category="fullstack">
+                        <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
+                            <div class="text-center z-20">
+                                <div class="inline-flex p-3 rounded-2xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 mb-2">
+                                    <i class="fab fa-react text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-mono text-brand-400">React Router &amp; Hooks</div>
+                            </div>
+                            <span class="absolute top-3 left-3 z-20 px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-cyan-600 text-white">
+                                React Full-Stack
+                            </span>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+                                    Course Management System
+                                </h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
+                                    Component Architecture • Dynamic Routing
+                                </p>
+                                
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                                    A responsive educational portal built using a modular component hierarchy. Features course catalog browsing, curriculum modification, and student enrollment tracking.
+                                </p>
+
+                                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1.5">
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-cyan-500 mt-0.5"></i>
+                                        <span><strong>Routing:</strong> Client-side navigation across detail views via React Router.</span>
+                                    </div>
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-cyan-500 mt-0.5"></i>
+                                        <span><strong>State &amp; APIs:</strong> React Hooks state synchronization and Axios async communication with error boundaries.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/50">React.js</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Axios</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-500">
+                                        <i class="fab fa-github"></i> Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project: TravelMate Platform -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:border-brand-500/50 transition-all hover:-translate-y-1 overflow-hidden animate-on-scroll" data-category="fullstack">
+                        <div class="h-48 bg-slate-950 relative overflow-hidden flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
+                            <div class="text-center z-20">
+                                <div class="inline-flex p-3 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 mb-2">
+                                    <i class="fas fa-plane-departure text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-mono text-emerald-400">Django Authentication &amp; SQL</div>
+                            </div>
+                            <span class="absolute top-3 left-3 z-20 px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-600 text-white">
+                                Full-Stack Platform
+                            </span>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">
+                                    TravelMate Booking Platform
+                                </h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
+                                    Python Django • Relational SQL • CRUD
+                                </p>
+                                
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                                    A full-cycle travel and holiday booking portal facilitating destination discovery, package comparisons, and secure trip reservations with complete relational schemas.
+                                </p>
+
+                                <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1.5">
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Database &amp; CRUD:</strong> Normalized models handling itineraries, accounts, and reservation bookings.</span>
+                                    </div>
+                                    <div class="flex items-start gap-1.5">
+                                        <i class="fas fa-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Security:</strong> Django session authentication, authorization gates, and admin controls.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">Python</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Django</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SQLite</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-500">
+                                        <i class="fab fa-github"></i> Repository
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supporting Project: Tic Tac Toe -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-400 dark:hover:border-slate-700 transition-all overflow-hidden animate-on-scroll" data-category="utility">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-base mb-3">
+                                    <i class="fab fa-android text-emerald-500"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                                    Tic Tac Toe Android App
+                                </h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                                    Native Android game featuring local pass-and-play multiplayer and an AI heuristic single-player opponent with game state persistence.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                <div class="flex gap-1.5">
+                                    <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400">• Android</span>
+                                </div>
+                                <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supporting Project: Calculator -->
+                    <div class="project-card flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-400 dark:hover:border-slate-700 transition-all overflow-hidden animate-on-scroll" data-category="utility">
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-base mb-3">
+                                    <i class="fas fa-calculator text-brand-500"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                                    Interactive Web Calculator
+                                </h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                                    Lightweight browser calculator supporting arithmetic evaluation, chained expressions, and full keyboard event accessibility with defensive input parsing.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                                <div class="flex gap-1.5">
+                                    <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400">JavaScript</span>
+                                    <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400">• CSS3</span>
+                                </div>
+                                <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">04 // Skills</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Technical Stack &amp; Skills</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Organized by functional domains without artificial percentage bars—reflecting practical project and training experience.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Languages -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Programming Languages</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Python</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">JavaScript</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SQL</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Core languages used in algorithmic problem solving</span>
+                    </div>
+
+                    <!-- Generative AI & LLMs -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Generative AI &amp; LLMs</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 font-semibold">LangChain</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 font-semibold">Google Gemini API</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Prompt Engineering</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">RAG Pipelines</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">ChatGPT / Claude</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Conversation chains, vector search &amp; memory</span>
+                    </div>
+
+                    <!-- Web & Frontend -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Web &amp; Frontend</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-cyan-50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/40 font-semibold">React.js</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">HTML5</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">CSS3</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Tailwind CSS</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Axios</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Component state, routing, and modern styling</span>
+                    </div>
+
+                    <!-- Backend & Architecture -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Backend &amp; Architecture</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 font-semibold">Django</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">RESTful APIs</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">JSON Serialization</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">CRUD Operations</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Scalable MVC backends and clean endpoints</span>
+                    </div>
+
+                    <!-- Databases & Modeling -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Databases &amp; Modeling</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">PostgreSQL</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SQLite</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Relational Schemas</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Complex Joins</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Verified by LeetCode SQL 50 Badge</span>
+                    </div>
+
+                    <!-- Tools & Workflow -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between animate-on-scroll">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center text-sm">
+                                    <i class="fas fa-screwdriver-wrench"></i>
+                                </div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Tools &amp; Workflow</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Git &amp; GitHub</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Postman API Testing</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">VS Code</span>
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">SDLC / Agile</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono text-slate-400 mt-4">Version control, debugging, and testing</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-100/50 dark:bg-slate-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">05 // Experience</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Professional Training &amp; Internships</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Documented training programs, practical remote internships, and industry job simulations.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border-l-4 border-l-brand-600 border border-slate-200 dark:border-slate-800 shadow-sm animate-on-scroll">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Python Full Stack Trainee</h3>
+                                <p class="text-sm font-semibold text-brand-600 dark:text-brand-400">Dhee Coding Lab (BTM Branch), Bengaluru</p>
+                            </div>
+                            <span class="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 w-fit">
+                                Feb 2026 – Present
+                            </span>
+                        </div>
+                        <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                            <li>Enrolled in an intensive full-stack program focused on architecting and debugging web applications using Python, SQL, HTML, CSS, JavaScript, React.js, and Django.</li>
+                            <li>Engineered RESTful APIs, handled structured JSON workflows, and conducted comprehensive endpoint validation using Postman.</li>
+                            <li>Applied standard Git/GitHub collaborative workflows, structured code reviews, and modern SDLC practices.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border-l-4 border-l-cyan-500 border border-slate-200 dark:border-slate-800 shadow-sm animate-on-scroll">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Python Programming Intern</h3>
+                                <p class="text-sm font-semibold text-cyan-600 dark:text-cyan-400">InternPe (Remote)</p>
+                            </div>
+                            <span class="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 w-fit">
+                                Aug 2025
+                            </span>
+                        </div>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Completed a 1-month practical remote internship working on real-world coding assignments, algorithmic optimization, modular scripting, and debugging in Python.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border-l-4 border-l-emerald-500 border border-slate-200 dark:border-slate-800 shadow-sm animate-on-scroll">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Technology Job Simulation</h3>
+                                <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Deloitte (Forage Virtual Experience)</p>
+                            </div>
+                            <span class="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 w-fit">
+                                Jul 2025
+                            </span>
+                        </div>
+                        <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Completed practical client problem simulations covering algorithmic logic, system architectural thinking, data analysis, and technical problem decomposition.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="journey-section">
-            <div data-aos="fade-up">
-                <h2 class="section-title">Experience & Education</h2>
-                <div class="journey-timeline">
-                    <div class="timeline-item timeline-left" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <h3>Python Full Stack Trainee</h3>
-                            <p>Dhee Coding Lab (BTM Branch), Bengaluru</p>
-                            <p>Feb 2026 - Present</p>
-                            <p>Upskilling in Python Full Stack Development to enhance web development knowledge and build industry-relevant skills.</p>
+        <section id="achievements" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">06 // Honors</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Honors &amp; Badges</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Documented university ranks, verified competitive coding achievements, and accredited credentials.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-amber-300 dark:border-amber-900/60 shadow-md flex items-start gap-4 animate-on-scroll">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-500 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">VTU University Rank Holder</h3>
+                            <p class="text-xs text-amber-600 dark:text-amber-400 font-mono font-medium mt-0.5">5th &amp; 7th Semester Distinction</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                                Ranked at the university level under Visvesvaraya Technological University with a 93.67% final-year aggregate and 9.09 cumulative CGPA.
+                            </p>
                         </div>
                     </div>
-                    <div class="timeline-item timeline-right" data-aos="fade-left" data-aos-delay="100">
-                        <div class="timeline-content">
-                            <h3>Python Programming Intern (Remote)</h3>
-                            <p>InternPe</p>
-                            <p>Aug 2025</p>
-                            <p>Completed a 1-month remote internship, working on real-world projects that enhanced coding, debugging, and optimization skills.</p>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex items-start gap-4 animate-on-scroll">
+                        <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/50 text-brand-500 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">350+ LeetCode Challenges</h3>
+                                <a href="https://leetcode.com/u/Arman_Attar_/" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-brand-500 hover:underline">
+                                    Profile &rarr;
+                                </a>
+                            </div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">LeetCode 100 Days Badge • SQL 50 Badge</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                                Consistently practiced algorithmic challenges in data structures, graph traversals, dynamic programming, and advanced relational SQL queries.
+                            </p>
                         </div>
                     </div>
-                    <div class="timeline-item timeline-left" data-aos="fade-right" data-aos-delay="200">
-                        <div class="timeline-content">
-                            <h3>Deloitte - Technology Job Simulation</h3>
-                            <p>Forage</p>
-                            <p>Jul 2025</p>
-                            <p>Gained hands-on experience in programming, data analysis, and software development through a simulated project.</p>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4 animate-on-scroll">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xl shrink-0">
+                            <i class="fab fa-hackerrank text-emerald-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white">HackerRank Certifications</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">Python &amp; SQL Verified</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                                Awarded Certificates of Accomplishment in both Python and SQL validating core problem solving and relational query writing.
+                            </p>
                         </div>
                     </div>
-                    <div class="timeline-item timeline-right" data-aos="fade-left" data-aos-delay="300">
-                        <div class="timeline-content">
-                            <h3>B.E in AI & ML Engineering</h3>
-                            <p>V.S.M. Institute of Technology (VTU), Nipani</p>
-                            <p>Dec 2022 - May 2026</p>
-                            <p><strong>CGPA:</strong> 9.11</p>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4 animate-on-scroll">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center text-xl shrink-0">
+                            <i class="fas fa-chart-line text-cyan-500"></i>
                         </div>
-                    </div>
-                    <div class="timeline-item timeline-left" data-aos="fade-right" data-aos-delay="400">
-                        <div class="timeline-content">
-                            <h3>12th/PUC</h3>
-                            <p>K.L.E. Basavaprabhu Kore College, Chikodi</p>
-                            <p>June 2020 - Apr 2022</p>
-                            <p><strong>Percentage:</strong> 78.16%</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-right" data-aos="fade-left" data-aos-delay="500">
-                        <div class="timeline-content">
-                            <h3>10th Grade</h3>
-                            <p>C K High School, Examba</p>
-                            <p>June 2019 - June 2020</p>
-                            <p><strong>Percentage:</strong> 74.24%</p>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 dark:text-white">Python for Data Science</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">IBM Skills Network</p>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
+                                Coursework credential validating data extraction, scientific Python library manipulation, and analytical fundamentals.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="skills-section" data-aos="zoom-in">
-             <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">VS Code</span>
-                <span class="skill-tag">Git & GitHub</span>
-            </div>
-        </section>
+        <section id="contact" class="py-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-100/50 dark:bg-slate-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col items-center text-center mb-14 animate-on-scroll">
+                    <span class="text-xs font-mono font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 mb-2">07 // Contact</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">Get In Touch</h2>
+                    <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl">
+                        Open for full-time engineering roles, technical inquiries, and project discussions.
+                    </p>
+                </div>
 
-        <section id="projects" class="projects-section">
-            <div data-aos="fade-up">
-                <h2 class="section-title">My Projects</h2>
-                <div class="project-grid">
-                    
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="50">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/818cf8/1f2937?text=Lung+Disease+Detection" alt="Screenshot of Lung Disease Detection App" loading="lazy">
-                            <div class="project-links">
-                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 max-w-5xl mx-auto items-start">
+                    <div class="lg:col-span-5 flex flex-col gap-4 animate-on-scroll">
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3.5 overflow-hidden">
+                                <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="truncate">
+                                    <div class="text-xs text-slate-400 font-mono">DIRECT EMAIL</div>
+                                    <a href="mailto:ayanattar49@gmail.com" class="text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-brand-500 truncate block">
+                                        ayanattar49@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <button id="copy-email-btn" aria-label="Copy Email" class="p-2 rounded-lg text-slate-400 hover:text-brand-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Copy to clipboard">
+                                <i class="far fa-copy text-sm"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">PHONE</div>
+                                <a href="tel:+919353785599" class="text-sm font-semibold text-slate-800 dark:text-slate-100 hover:text-cyan-500">
+                                    +91 9353785599
+                                </a>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <h3>Lung Disease Detection</h3>
-                            <p>AI-powered system to classify chest X-rays (Normal, Pneumonia, COVID-19) using an EfficientNet-B0 model. Users can upload images and receive real-time predictions.</p>
-                            <div class="project-tags">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">PostgreSQL</span>
+
+                        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                                <i class="fas fa-location-dot"></i>
                             </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">LOCATION</div>
+                                <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">
+                                    Bengaluru, Karnataka, India
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-brand-500/10 border border-brand-500/25 flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-900 dark:text-white">Full Resume PDF</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Arman_Attar_Resume.pdf</p>
+                            </div>
+                            <a href="Arman_Attar_Resume.pdf" download class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-500 text-white transition-colors">
+                                <i class="fas fa-download mr-1"></i> Download
+                            </a>
                         </div>
                     </div>
 
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="150">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/1f2937/ffffff?text=Trip+Planner" alt="Screenshot of Trip Planner" loading="lazy">
-                            <div class="project-links">
-                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
-                                <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                    <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg animate-on-scroll">
+                        <form id="contact-form" action="https://formspree.io/f/your_specific_form_id_here" method="POST" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">YOUR NAME</label>
+                                    <input type="text" name="name" required placeholder="e.g. Alex Johnson" class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">EMAIL ADDRESS</label>
+                                    <input type="email" name="email" required placeholder="alex@company.com" class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 transition-colors">
+                                </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Trip Planner</h3>
-                            <p>A travel booking platform where users can explore destinations, compare travel packages, and book trips. Implemented full CRUD operations for user accounts and bookings.</p>
-                            <div class="project-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">SQLite</span>
-                                <span class="tech-tag">HTML/CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="250">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/1f2937/ffffff?text=Tic+Tac+Toe" alt="Screenshot of Tic Tac Toe" loading="lazy">
-                            <div class="project-links">
-                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">SUBJECT / ROLE DISCUSSION</label>
+                                <input type="text" name="subject" placeholder="e.g. Software Engineer / Python Developer Opportunity" class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 transition-colors">
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Tic Tac Toe App</h3>
-                            <p>An interactive Tic Tac Toe game with two-player gameplay and a challenging AI opponent, featuring a clean and intuitive user interface.</p>
-                            <div class="project-tags">
-                                <span class="tech-tag">Android</span>
-                                <span class="tech-tag">Java</span>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-500 dark:text-slate-400 mb-1.5">MESSAGE</label>
+                                <textarea name="message" rows="4" required placeholder="Write your message here..." class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500 transition-colors"></textarea>
                             </div>
-                        </div>
-                    </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="350">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/1f2937/ffffff?text=Calculator" alt="Screenshot of Calculator App" loading="lazy">
-                            <div class="project-links">
-                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Calculator App</h3>
-                            <p>A responsive and user-friendly calculator that supports basic arithmetic operations with a lightweight and efficient design.</p>
-                            <div class="project-tags">
-                                 <span class="tech-tag">HTML</span>
-                                 <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="450">
-                        <div class="project-image-container">
-                            <img src="https://placehold.co/600x400/1f2937/ffffff?text=Real-Time+Clock" alt="Screenshot of Real-Time Clock" loading="lazy">
-                            <div class="project-links">
-                                <a href="#" target="_blank" aria-label="View Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Real-Time Clock</h3>
-                            <p>A simple and clean digital clock that displays the current time accurately, updating every second without needing a page refresh.</p>
-                            <div class="project-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Tkinter</span>
-                            </div>
-                        </div>
+
+                            <button type="submit" id="submit-btn" class="w-full py-3 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/25 transition-all">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                            
+                            <div id="form-feedback" class="hidden text-xs text-center py-2 px-3 rounded-lg font-medium"></div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="awards" class="certifications-section">
-            <div data-aos="fade-up">
-                <h2 class="section-title">Honors & Awards</h2>
-                <div class="certifications-grid">
-                    
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="50">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h3 class="highlight-gold">University Rank Holder</h3>
-                            <p class="achievement-desc">Achieved University Rank in the 5th & 7th semesters with a 93.62% final year aggregate.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-card" data-aos="fade-left" data-aos-delay="150">
-                        <i class="fas fa-award"></i>
-                        <div>
-                            <h3>DSA For Product-Based Companies</h3>
-                            <p>Solved 150+ LeetCode Problems and regularly practiced coding challenges.</p>
-                        </div>
-                    </div>
-
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="250">
-                        <i class="fas fa-laptop-code"></i>
-                        <div>
-                            <h3>Python Certificate</h3>
-                            <p>HackerRank Certificate of Accomplishment</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-card" data-aos="fade-left" data-aos-delay="350">
-                        <i class="fas fa-database"></i>
-                        <div>
-                            <h3>SQL Certificate</h3>
-                            <p>HackerRank Certificate of Accomplishment</p>
-                        </div>
-                    </div>
-
-                    <div class="cert-card" data-aos="fade-right" data-aos-delay="450">
-                        <i class="fab fa-python"></i>
-                        <div>
-                            <h3>Python For Data Science</h3>
-                            <p>IBM Skills Network</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section" data-aos="zoom-in">
-            <h2 class="section-title">Get In Touch</h2>
-            <p>Have a question or want to work together? Feel free to leave me a message below!</p>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:ayanattar49@gmail.com">ayanattar49@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <a href="tel:+919353785599">+91 9353785599</a>
-                </div>
-            </div>
-            
-            <form id="contact-form" action="https://formspree.io/f/your_specific_form_id_here" method="POST" class="contact-form">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-            <div id="form-status"></div>
-        </section>
-
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/Spidey017" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://leetcode.com/u/At7jDUiiln/" target="_blank" aria-label="LeetCode"><i class="fas fa-keyboard"></i></a>
-                <a href="https://www.linkedin.com/in/arman-attar-b273b32b1/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <footer class="py-10 border-t border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#070b14] text-slate-500 dark:text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-900 dark:text-white font-mono">Arman Attar</span>
+                <span>&copy; 2026. Built with verified resume credentials.</span>
             </div>
-            <p>&copy; 2026 Arman Attar. All rights reserved.</p>
+
+            <div class="flex items-center gap-4 text-base">
+                <a href="https://github.com/Spidey017" target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition-colors" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://leetcode.com/u/Arman_Attar_/" target="_blank" rel="noopener noreferrer" class="hover:text-amber-500 transition-colors" title="LeetCode">
+                    <i class="fas fa-code"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/arman-attar-b273b32b1/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 transition-colors" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:ayanattar49@gmail.com" class="hover:text-rose-500 transition-colors" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <!-- External Linked Controller Script -->
     <script src="script.js"></script>
 </body>
 </html>
